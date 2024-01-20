@@ -4,6 +4,8 @@ const handlebars = require("express-handlebars");
 const path = require("path");
 const port = 5000;
 
+const routes = require("../src/views/routes.js");
+
 app.engine(
   "hbs",
   handlebars.engine({
@@ -16,7 +18,6 @@ app.set("views", path.join(__dirname, "views"));
 app.use(express.static(path.join(__dirname, "static")));
 app.use(express.urlencoded({ extended: false }));
 
-app.get("/", (req, res) => {
-  res.send("hello");
-});
+app.use(routes);
+
 app.listen(port, () => console.log(`The server is listening on port ${port}`));
