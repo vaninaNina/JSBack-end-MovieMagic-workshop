@@ -1,3 +1,5 @@
+const Movie = require("../models/Movie.js");
+
 const movies = [
   {
     title: "Harry Potter and the Philosopher's Stone",
@@ -42,6 +44,7 @@ exports.getOne = (movieId) => {
 };
 
 exports.create = (movieData) => {
+  Movie.create(movieData);
   movieData._id = movies[movies.length - 1]._id + 1;
 
   movies.push(movieData);
