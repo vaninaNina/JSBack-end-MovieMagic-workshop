@@ -6,6 +6,9 @@ router.use(homeController);
 const movieController = require("../controllers/movieController.js");
 router.use(movieController);
 
+const castController = require("../controllers/castController.js");
+router.use("/cast", castController);
+
 router.get("*", (req, res) => {
   res.redirect("/404");
 });
