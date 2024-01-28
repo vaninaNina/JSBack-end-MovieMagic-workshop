@@ -48,3 +48,7 @@ exports.getOne = (movieId) => {
 exports.create = (movieData) => {
   Movie.create(movieData);
 };
+
+exports.attach = async (movieId, castId) => {
+  return Movie.findByIdAndUpdate(movieId, { $push: { casts: castId } });
+};
