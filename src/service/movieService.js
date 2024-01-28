@@ -41,7 +41,7 @@ exports.search = async (title, genre, year) => {
 };
 
 exports.getOne = (movieId) => {
-  const movie = Movie.findById(movieId);
+  const movie = Movie.findById(movieId).populate("casts");
   return movie;
 };
 
