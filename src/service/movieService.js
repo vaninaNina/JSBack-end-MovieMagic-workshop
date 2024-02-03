@@ -41,6 +41,9 @@ exports.getOne = (movieId) => {
   return movie;
 };
 
+exports.edit = (movieId, movieData) =>
+  Movie.findByIdAndUpdate(movieId, movieData);
+
 exports.create = (movieData) => {
   Movie.create(movieData);
 };
@@ -48,3 +51,5 @@ exports.create = (movieData) => {
 exports.attach = async (movieId, castId) => {
   return Movie.findByIdAndUpdate(movieId, { $push: { casts: castId } });
 };
+
+exports.delete = (movieId) => Movie.findByIdAndDelete(movieId);
