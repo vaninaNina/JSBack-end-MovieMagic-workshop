@@ -1,13 +1,14 @@
 const router = require("express").Router();
 
 const homeController = require("../src/controllers/homeController.js");
-router.use(homeController);
-
 const movieController = require("../src/controllers/movieController.js");
-router.use(movieController);
-
 const castController = require("../src/controllers/castController.js");
+const authController = require("../src/controllers/authController.js");
+
+router.use(homeController);
+router.use(movieController);
 router.use("/cast", castController);
+router.use("/auth", authController);
 
 router.get("*", (req, res) => {
   res.redirect("/404");
