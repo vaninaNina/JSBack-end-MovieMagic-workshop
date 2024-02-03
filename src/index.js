@@ -1,7 +1,7 @@
 const express = require("express");
 const mongoose = require("mongoose");
 const app = express();
-
+const cookieParser = require("cookie-parser");
 const handlebars = require("express-handlebars");
 const path = require("path");
 const port = 5000;
@@ -19,6 +19,7 @@ app.set("views", path.join(__dirname, "views"));
 
 app.use(express.static(path.join(__dirname, "static")));
 app.use(express.urlencoded({ extended: false }));
+app.use(cookieParser());
 
 app.use(routes);
 
