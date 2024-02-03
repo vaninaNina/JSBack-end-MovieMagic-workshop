@@ -6,7 +6,7 @@ const handlebars = require("express-handlebars");
 const path = require("path");
 const port = 5000;
 
-const routes = require("./views/routes.js");
+const routes = require("../src/routes.js");
 
 app.engine(
   "hbs",
