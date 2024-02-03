@@ -7,6 +7,7 @@ const path = require("path");
 const port = 5000;
 
 const routes = require("../src/routes.js");
+const { auth } = require("../src/middlewares/authMiddleware.js");
 
 app.engine(
   "hbs",
@@ -20,6 +21,7 @@ app.set("views", path.join(__dirname, "views"));
 app.use(express.static(path.join(__dirname, "static")));
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
+app.use(auth);
 
 app.use(routes);
 
