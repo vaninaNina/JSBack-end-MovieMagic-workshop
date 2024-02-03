@@ -18,5 +18,11 @@ userSchema.pre("save", async function () {
   this.password = hash;
 });
 
+userSchema.virtual("rePassword").set(function (value) {
+  if (value !== this.password) {
+    throw new mongoose.MongooseError("Password missmatch!");
+  }
+});
+
 const User = mongoose.model("User", userSchema);
 module.exports = User;
