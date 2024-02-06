@@ -1,5 +1,5 @@
 const router = require("express").Router();
-
+const mongoose = require("mongoose");
 const authService = require("../service/authService.js");
 
 router.get("/register", (req, res) => {
@@ -8,8 +8,14 @@ router.get("/register", (req, res) => {
 
 router.post("/register", async (req, res) => {
   const userData = req.body;
-  await authService.register(userData);
-  res.redirect("/auth/login");
+
+  try {
+    await authService.register(userData);
+    res.redirect("/auth/login");
+  } catch (err) {
+    const message = getErrorMessage(err);
+    res.render("auth/register", { ...userData, error: message });
+  }
 });
 
 router.get("/login", (req, res) => {
